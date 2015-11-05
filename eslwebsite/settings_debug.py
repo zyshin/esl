@@ -17,8 +17,8 @@ BROKER_URL = 'amqp://'
 # CELERY_RESULT_BACKEND = 'djcelery.backends.cache:CacheBackend'
 # CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
 
-#: Only add pickle to this list if your broker is secured
-#: from unwanted access (see userguide/security.html)
+# Only add pickle to this list if your broker is secured
+# from unwanted access (see userguide/security.html)
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
@@ -37,7 +37,10 @@ LOGOUT_URL = '/'
 
 from os import path
 PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
-DATA_DIR = path.join(PROJECT_ROOT, 'data')
+DATA_ROOT = PROJECT_ROOT
+MEDIA_ROOT = path.join(DATA_ROOT, 'media')
+
+DATA_DIR = path.join(DATA_ROOT, 'data')
 CORPORA_DIR = path.join(DATA_DIR, 'corpora')
 LIB_DIR = path.join(PROJECT_ROOT, 'libs')
 PDFTOTEXT = 'pdftotext'  #path.join(LIB_DIR, 'pdftotext')
@@ -45,6 +48,17 @@ STANFORD_CORENLP = path.join(LIB_DIR, 'stanford-corenlp')
 STANFORD_CORENLP_CP = path.join(STANFORD_CORENLP, '*')
 # JAVA = path.join(path.expandvars('%JAVA_HOME%'), 'bin', 'java')
 JAVA = 'java'
+
+# Uploads Directory
+UPLOAD_DIR = path.join(MEDIA_ROOT, 'uploads')
+CHUNKS_DIR = path.join(MEDIA_ROOT, 'chunks')
+PAPERS_DIR = path.join(MEDIA_ROOT, 'papers')
+
+# Preprocess Directory
+EXTRACTED_DIR = path.join(MEDIA_ROOT, 'extracted')
+REFINED_DIR = path.join(MEDIA_ROOT, 'refined')
+PARSED_DIR = path.join(MEDIA_ROOT, 'parsed')
+COMPRESSED_DIR = path.join(MEDIA_ROOT, 'compressed')
 
 
 DEBUG = True
@@ -63,7 +77,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': path.join(PROJECT_ROOT, 'db.sqlite3'),
+        'NAME': path.join(DATA_ROOT, 'db.sqlite3'),
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
@@ -115,22 +129,6 @@ USE_L10N = True
 
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
-
-# Absolute filesystem path to the directory that will hold user-uploaded files.
-# Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = path.join(PROJECT_ROOT, 'media')
-DATA_DIR = path.join(PROJECT_ROOT, 'data')
-
-# Uploads Directory
-UPLOAD_DIR = path.join(MEDIA_ROOT, 'uploads')
-CHUNKS_DIR = path.join(MEDIA_ROOT, 'chunks')
-PAPERS_DIR = path.join(MEDIA_ROOT, 'papers')
-
-# Preprocess Directory
-EXTRACTED_DIR = path.join(MEDIA_ROOT, 'extracted')
-REFINED_DIR = path.join(MEDIA_ROOT, 'refined')
-PARSED_DIR = path.join(MEDIA_ROOT, 'parsed')
-COMPRESSED_DIR = path.join(MEDIA_ROOT, 'compressed')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -273,21 +271,22 @@ EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = 'ESLWriter <%s>' % EMAIL_HOST_USER
 
 
-# Azure Settings
-IS_STORE_BY_AZURE = False
-AZURE_STORAGE_HOST_BASE = '.blob.core.chinacloudapi.cn'
-AZURE_STORAGE_ACCOUNT_NAME = 'papers'
-AZURE_STORAGE_ACCOUNT_KEY = 'Nf668AcLg+e0ubSImGTUvvDQgdj68I7//qWGL44QltKchEkwCNClQHJtFfrNB72DoeivySKf+OhZ+gsdVje18w=='
-AZURE_PAPERS_CONTAINER = 'papers'
-AZURE_EXTRACTED_CONTAINER = 'extracted'
-AZURE_REFINED_CONTAINER = 'refined'
-AZURE_PARSED_CONTAINER = 'parsed'
-AZURE_COMPRESSED_CONTAINER = 'compressed'
+# # Azure Settings
+# IS_STORE_BY_AZURE = False
+# AZURE_STORAGE_HOST_BASE = '.blob.core.chinacloudapi.cn'
+# AZURE_STORAGE_ACCOUNT_NAME = 'papers'
+# AZURE_STORAGE_ACCOUNT_KEY = 'Nf668AcLg+e0ubSImGTUvvDQgdj68I7//qWGL44QltKchEkwCNClQHJtFfrNB72DoeivySKf+OhZ+gsdVje18w=='
+# AZURE_PAPERS_CONTAINER = 'papers'
+# AZURE_EXTRACTED_CONTAINER = 'extracted'
+# AZURE_REFINED_CONTAINER = 'refined'
+# AZURE_PARSED_CONTAINER = 'parsed'
+# AZURE_COMPRESSED_CONTAINER = 'compressed'
 
-ORIGIN_FILE = 1
-EXTRACTED_FILE = 2
-REFINED_FILE = 3
+# ORIGIN_FILE = 1
+# EXTRACTED_FILE = 2
+# REFINED_FILE = 3
 
+# Upload Settings
 MAX_UPLOAD_SIZE = 50*1024*1024
 
 
@@ -296,7 +295,7 @@ from pymongo import MongoClient
 # from django.contrib.sites.models import Site
 # CURRENT_SITE = Site.objects.get_current()
 # DBC = MongoClient(CURRENT_SITE.domain.split(':')[0])
-# DBC = MongoClient('166.111.139.142')
+# DBC = MongoClient('166.111.139.42')
 DBC = MongoClient()
 try:
     DBC.database_names()
