@@ -254,13 +254,10 @@ TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 # EMAIL_PORT = 1025
 # EMAIL_USE_TLS = False
 
-# EMAIL_HOST = 'smtp.qq.com'
-# EMAIL_HOST_USER = 'admin@thuesl.org'
-# EMAIL_HOST_PASSWORD = 'qqESLWriter123'
-
 EMAIL_HOST = 'smtp.qq.com'
-EMAIL_HOST_USER = 'eslwriter@foxmail.com'
-EMAIL_HOST_PASSWORD = 'qqChampion123'
+EMAIL_HOST_USER = 'admin@thuesl.org'
+# EMAIL_HOST_USER = 'eslwriter@foxmail.com'
+EMAIL_HOST_PASSWORD = 'qqESLWriter123'
 
 # EMAIL_HOST = 'smtp.sendgrid.net'
 # EMAIL_HOST_USER = 'azure_f46784bc2d34bde578379c62a880043b@azure.com'
