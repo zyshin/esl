@@ -1,16 +1,11 @@
 """
-Django settings for DjangoWebProject project.
+Django settings for ESL project.
 """
 
 # Celery settings
 
 from __future__ import absolute_import
-# ^^^ The above is required if you want to import from the celery
-# library.  If you don't have this then `from celery.schedules import`
-# becomes `proj.celery.schedules` in Python 2.x since it allows
-# for relative imports by default.
-
-# Celery settings
+from .celery_debug import app as celery_app
 
 # BROKER_URL = 'django://'
 BROKER_URL = 'amqp://'
@@ -63,6 +58,7 @@ COMPRESSED_DIR = path.join(MEDIA_ROOT, 'compressed')
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+CELERY_DEBUG = False
 
 ALLOWED_HOSTS = (
     '*',
