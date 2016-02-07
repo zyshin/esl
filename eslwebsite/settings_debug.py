@@ -92,6 +92,9 @@ DATABASES = {
     # }
 }
 
+def debug(context):
+    return {'DEBUG': DEBUG}
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -110,10 +113,15 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
+                'common.utils.debug',
             ],
         },
     },
 ]
+
+INTERNAL_IPS = (
+    '*',
+)
 
 CACHES = {
     'default': {
