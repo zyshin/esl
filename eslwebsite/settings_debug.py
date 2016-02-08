@@ -201,9 +201,9 @@ MIDDLEWARE_CLASSES = (
 )
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-CSRF_COOKIE_HTTPONLY = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+# CSRF_COOKIE_HTTPONLY = True
 X_FRAME_OPTIONS = 'DENY'
 
 ROOT_URLCONF = 'eslwebsite.urls'
@@ -311,8 +311,8 @@ from pymongo import MongoClient
 # from django.contrib.sites.models import Site
 # CURRENT_SITE = Site.objects.get_current()
 # DBC = MongoClient(CURRENT_SITE.domain.split(':')[0])
-DBC = MongoClient('166.111.139.42')
-# DBC = MongoClient()
+# DBC = MongoClient('166.111.139.42')
+DBC = MongoClient()
 try:
     DBC.database_names()
 except:
