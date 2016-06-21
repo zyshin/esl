@@ -61,7 +61,7 @@ EMAIL_DEBUG = False
 CELERY_DEBUG = False
 
 ALLOWED_HOSTS = (
-    '*',
+    '.thuesl.org',
 )
 
 ADMINS = (
@@ -313,8 +313,8 @@ from pymongo import MongoClient
 # from django.contrib.sites.models import Site
 # CURRENT_SITE = Site.objects.get_current()
 # DBC = MongoClient(CURRENT_SITE.domain.split(':')[0])
-# DBC = MongoClient('166.111.139.42', connect=False)
-DBC = MongoClient(connect=False)
+DBC = MongoClient('166.111.139.42', connect=False)
+# DBC = MongoClient(connect=False)
 try:
     DBC.database_names()
 except:
