@@ -62,6 +62,13 @@ CELERY_DEBUG = False
 
 ALLOWED_HOSTS = (
     '.thuesl.org',
+    '.thuesl.com',
+    '.thuesl.net',
+    '.thuesl.cn',
+    '.eslwriter.org',
+    '.eslwriter.com',
+    '.eslwriter.net',
+    '.eslwriter.cn',
 )
 
 ADMINS = (

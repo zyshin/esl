@@ -61,7 +61,7 @@ EMAIL_DEBUG = False
 CELERY_DEBUG = False
 
 ALLOWED_HOSTS = (
-    '.thuesl.org',
+    '*',
 )
 
 ADMINS = (
