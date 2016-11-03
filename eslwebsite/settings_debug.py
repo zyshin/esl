@@ -22,7 +22,7 @@ CELERY_RESULT_SERIALIZER = 'json'
 # Registration settings
 
 REGISTRATION_OPEN = False
-ACCOUNT_ACTIVATION_DAYS = 7
+ACCOUNT_ACTIVATION_DAYS = 30
 REGISTRATION_AUTO_LOGIN = True
 LOGIN_URL = '/accounts/login/'
 # LOGIN_REDIRECT_URL = '/accounts/'
@@ -271,22 +271,16 @@ TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 if EMAIL_DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# EMAIL_HOST = 'localhost'
-# EMAIL_PORT = 1025
-# EMAIL_USE_TLS = False
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 10025
 
-EMAIL_HOST = 'smtp.qq.com'
-EMAIL_HOST_USER = 'admin@thuesl.org'
-# EMAIL_HOST_USER = 'eslwriter@foxmail.com'
-EMAIL_HOST_PASSWORD = 'qqESLWriter123'
+# EMAIL_HOST = 'smtp.qq.com'
+# EMAIL_HOST_USER = ''
+# EMAIL_HOST_PASSWORD = ''
 
-# EMAIL_HOST = 'smtp.sendgrid.net'
-# EMAIL_HOST_USER = 'azure_f46784bc2d34bde578379c62a880043b@azure.com'
-# EMAIL_HOST_PASSWORD = 'eQu4mo5ih9U3VO5'
-
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = 'ESLWriter <%s>' % EMAIL_HOST_USER
+# EMAIL_USE_TLS = True
+# EMAIL_PORT = 587
+# DEFAULT_FROM_EMAIL = 'ESLWriter <%s>' % EMAIL_HOST_USER
 
 
 # # Azure Settings
