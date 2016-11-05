@@ -57,7 +57,7 @@ COMPRESSED_DIR = path.join(MEDIA_ROOT, 'compressed')
 
 
 DEBUG = True
-EMAIL_DEBUG = False
+EMAIL_DEBUG = True
 CELERY_DEBUG = False
 
 ALLOWED_HOSTS = (
@@ -271,8 +271,8 @@ TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 if EMAIL_DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 10025
+# EMAIL_HOST = 'localhost'
+# EMAIL_PORT = 10025
 
 # EMAIL_HOST = 'smtp.qq.com'
 # EMAIL_HOST_USER = ''
